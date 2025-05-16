@@ -1,0 +1,6 @@
+#!/bin/env bash
+
+while :
+do
+   "$(dirname "$(realpath "$0")")/scripts/single-menu" || exit 0
+done

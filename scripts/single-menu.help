@@ -1,0 +1,49 @@
+This is the help of the manager menu of redpesk framework SDK.
+Apart this help, the menu offers the action detailled below.
+The action are run by typing their number or the letter in brackets.
+
+1. (h)elp
+
+  Shows this help
+
+2. (e)dit
+
+  Shows what file is to be edited for changing the settings.
+  See the README.md file for more details on config.
+  Then it waits for a press on enter key to reload settings
+  and iterate on the menu.
+
+3. (b)uild and (i)nstall
+
+  Build and install redpesk framework SDK accordingly to the
+  current configuration.
+  The build fails if the required packages are not installed
+  on the computer.
+  See the README.md file for more details on required packages.
+
+4. (r)eset
+
+  Remove all build artifacts. Note that after doing this action,
+  the action "uninstall" becomes unavailable.
+
+5. (u)ninstall
+
+  Uninstall the files installed by "build and install".
+
+6. (s)how (s)etup
+
+  Shows how to setup your environment variables for using
+  the SDK. Check your prefered shell documentation for
+  adding these settings in your environment automatically.
+
+7. (c)lean
+
+  Removes build artifacts from build directories. It differs
+  from "reset" because it does not removes files used for
+  building. After this action, most artifacts are removed
+  and the action "uninstall" remains available.
+
+8. (q)uit
+
+  Exits the menu.
+

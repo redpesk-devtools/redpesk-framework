@@ -1,0 +1,74 @@
+#!/bin/env bash
+
+# ensure config
+if ! test "$_with_config_" = $$; then
+   exec "$(dirname "$(realpath "$0")")/with-config" "$0" "$@"
+fi
+
+cat << END_OF_CAT
+
+  REDPESK FRAMEWORK SDK MANAGER
+
+  Current configuration:
+
+    BUILD   $BUILDDIR
+    INSTALL $PREFIX
+    DEBUG   ${DEBUG:-no}
+
+  ** commands **
+
+  1: (h)elp      2: (e)dit        3: (b)uild and (i)nstall
+  4: (r)eset     5: (u)ninstall   6: (s)how (s)etup
+  7: (c)lean     8: (q)uit
+
+END_OF_CAT
+
+echo -n "  What now? "
+read answer
+echo
+
+case "${answer@L}" in
+1|h|help)
+   less "$0.help"
+   ;;
+2|e|edit)
+   echo
+   echo "Please, use your prefered editor to edit the file:"
+   echo
+   echo "$ROOTDIR/config"
+   echo
+   echo -n "Then, after saving it, press enter ..."
+   read x
+   ;;
+3|b|build|i|install)
+   "$ROOTDIR/scripts/do-all" build
+   ;;
+4|r|reset)
+   "$ROOTDIR/scripts/do-all" reset
+   ;;
+5|u|uninstall)
+   "$ROOTDIR/scripts/do-all" uninstall
+   ;;
+6|s|show|setup)
+   echo 
+   echo "export PATH=\"$PREFIX/bin:\$PATH\""
+   echo "export LD_LIBRARY_PATH=\"$PREFIX/lib64:$PREFIX/lib:\$LD_LIBRARY_PATH\""
+   echo "export LIBRARY_PATH=\"$PREFIX/lib64:$PREFIX/lib:\$LIBRARY_PATH\""
+   echo "export PKG_CONFIG_PATH=\"$PREFIX/lib64/pkgconfig:$PREFIX/lib/pkgconfig:$PREFIX/share/pkgconfig:\$PKG_CONFIG_PATH\""
+   echo "export CPATH=\"$PREFIX/include:\$CPATH\""
+   echo "export MANPATH=\"$PREFIX/share/man:\$MANPATH\""
+   echo 
+   ;;
+7|c|clean)
+   "$ROOTDIR/scripts/do-all" clean
+   ;;
+8|q|quit)
+   exit 42
+   ;;
+*)
+   echo "Can't understand $answer"
+   ;;
+esac
+
+echo
+exit 0

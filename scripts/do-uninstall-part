@@ -1,0 +1,24 @@
+#!/bin/env bash
+
+# ensure config
+if ! test "$_with_config_" = $$; then
+  exec "$(dirname "$(realpath "$0")")/with-config" "$0" "$@"
+fi
+
+error() { echo "ERROR $*" >&2; exit 1; }
+
+# get name of part to build
+test $# -ge 1 || error "expect at least one argument"
+name="$1"
+
+# compute directory location
+blddir="$BUILDDIR/$name"
+test -d "$blddir" || exit 0
+
+# remove installed 
+flst="$blddir/install_manifest.txt"
+test -f "$flst" || exit 0
+xargs -n 1 echo removing  < "$flst"
+xargs -n 1 rm < "$flst"
+rm "$flst"
+

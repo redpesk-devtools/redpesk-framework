@@ -1,0 +1,32 @@
+#!/bin/env bash
+
+# definition of ROOTDIR
+export ROOTDIR="$(realpath "$(dirname "$0")/..")"
+
+gdir="$ROOTDIR"
+
+# find the version
+version="${1:-$(git -C "$gdir" describe HEAD 2>/dev/null)}"
+: ${version:=$(git -C "$gdir" describe --tags HEAD 2>/dev/null)}
+: ${version:=$(git -C "$gdir" describe --always HEAD 2>/dev/null)}
+
+# set names
+name="redpesk-framework"
+out="$name-$version.tgz"
+prefix="$name-$version/"
+
+# some output
+echo "creation of $out"
+
+# ensure submodules exist
+git -C "$gdir" submodule update
+
+# create the tree structure in a temporary directory
+tmpdir="$(mktemp -d)"
+git -C "$gdir" archive --format tar --prefix "$prefix" HEAD | tar -xC "$tmpdir"
+git -C "$gdir" submodule foreach --quiet "git -C \"$gdir/\$sm_path\" archive --format tar --prefix \"$prefix\$sm_path/\" \"\$sha1\" | tar -x -C \"$tmpdir\""
+
+# finaly create the tar file
+tar -c -C "$tmpdir" -f "$out" -a "$prefix"
+rm -r "$tmpdir"
+

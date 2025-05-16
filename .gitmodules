@@ -1,0 +1,18 @@
+[submodule "rp-lib-utils"]
+	path = rp-lib-utils
+	url = https://github.com/redpesk-core/rp-lib-utils.git
+[submodule "afb-binding"]
+	path = afb-binding
+	url = https://github.com/redpesk-core/afb-binding.git
+[submodule "afb-libafb"]
+	path = afb-libafb
+	url = https://github.com/redpesk-core/afb-libafb.git
+[submodule "afb-binder"]
+	path = afb-binder
+	url = https://github.com/redpesk-core/afb-binder.git
+[submodule "afb-client"]
+	path = afb-client
+	url = https://github.com/redpesk-core/afb-client.git
+[submodule "afb-monitoring"]
+	path = afb-monitoring
+	url = https://github.com/redpesk-devtools/afb-monitoring.git

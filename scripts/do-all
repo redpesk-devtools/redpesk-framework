@@ -1,0 +1,33 @@
+#!/bin/env bash
+
+# ensure config
+if ! test "$_with_config_" = $$; then
+   exec "$(dirname "$(realpath "$0")")/with-config" "$0" "$@"
+fi
+
+action="$1"
+prog="$ROOTDIR/scripts/do-$action-part"
+test -x "$prog" || { echo "Unknown action $action" >&2; exit 1; }
+
+process() {
+   echo
+   echo
+   echo ========================================================
+   if type -t figlet > /dev/null; then
+      echo "$action"
+      figlet "$1"
+   else
+      echo "== $action $1"
+   fi
+   echo ============
+   "$prog" "$@"
+}
+  
+set -e
+process rp-lib-utils
+process afb-binding
+process afb-libafb -DWITHOUT_CYNAGORA=ON
+process afb-binder
+process afb-client
+process afb-monitoring -Wno-dev
+
