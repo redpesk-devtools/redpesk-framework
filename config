@@ -1,11 +1,11 @@
 # configuration file for redpesk-framework
 
 # default build directory
-BUILDDIR=$HOME/tmp/redpesk/BUILDDIR
+BUILDDIR=$ROOTDIR/BUILDDIR
 
 # default installation directory
-PREFIX=/opt/redpesk
-#PREFIX=$HOME/.local
+#PREFIX=/opt/redpesk
+PREFIX=$HOME/.local
 
 # set it to yes to activate debugging installation
 #DEBUG=yes

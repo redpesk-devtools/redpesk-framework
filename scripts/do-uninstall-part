@@ -18,7 +18,7 @@ test -d "$blddir" || exit 0
 # remove installed 
 flst="$blddir/install_manifest.txt"
 test -f "$flst" || exit 0
-xargs -n 1 echo removing  < "$flst"
-xargs -n 1 rm < "$flst"
+sort -u "$flst" | xargs -n 1 echo removing
+sort -u -r "$flst" | xargs -n 1 rm
 rm "$flst"
 

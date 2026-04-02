@@ -78,6 +78,7 @@ its submodules.
 ```sh
 $ git clone URL
 $ cd redpesk-framework
+$ git submodule init
 $ git submodule update
 ```
 
