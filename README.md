@@ -121,7 +121,7 @@ export MANPATH="HOME/.local/share/man:$MANPATH"
   4: (r)eset     5: (u)ninstall   6: (s)how (s)etup
   7: (c)lean     8: (q)uit
 
-  What now? 3
+  What now? q
 
 ```
 
@@ -192,3 +192,5 @@ $ git submodule init
 $ git submodule update
 ```
 
+Using this, you can manually enter in parts of the framework and
+compile them individually.
