@@ -1,0 +1,10 @@
+type: books
+books:
+-
+    id: host-build-doc
+    title: 
+    description:
+    author: "IotBzh"
+    chapters:
+    - url: ../README.md
+      name: Build framework on your computer
