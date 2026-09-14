@@ -7,6 +7,7 @@ without needing to be root.
 Steps to follow are easy:
 
 - Setup your environment
+   - download the sources
    - install dependencies
    - adapt the config if needed
 
@@ -15,9 +16,29 @@ Steps to follow are easy:
 
 ## Setup
 
-Redpesk framework depends on compiling tools and of
-external libraries that should be available on the
-computer for compiling it.
+Sources of redpesk framework must be downloaded either
+as a compressed file or using git.
+
+Then for compiling redpesk framework some tools and
+external libraries should be installed and available
+on the computer.
+
+### Downloading sources
+
+Sources can be downloaded either as an archive file or using git.
+
+- the archive can be downloaded [here](https://github.com/redpesk-devtools/redpesk-framework/releases/download/0.3/redpesk-framework-0.3.tgz)
+  or using commands below:
+   - `VERSION=0.3`
+   - `wget https://github.com/redpesk-devtools/redpesk-framework/releases/download/$VERSION/redpesk-framework-$VERSION.tgz`
+   - `tar xf redpesk-framework-$VERSION.tgz`
+   - `cd redpesk-framework-$VERSION`
+
+- the git repository can be downloaded using below commands:
+   - `git clone https://github.com/redpesk-devtools/redpesk-framework.git`
+   - `cd redpesk-framework`
+   - `git submodule init`
+   - `git submodule update`
 
 ### Install dependencies on fedora
 
