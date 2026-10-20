@@ -27,9 +27,9 @@ on the computer.
 
 Sources can be downloaded either as an archive file or using git.
 
-- the archive can be downloaded [here](https://github.com/redpesk-devtools/redpesk-framework/releases/download/0.3/redpesk-framework-0.3.tgz)
+- the archive can be downloaded [here](https://github.com/redpesk-devtools/redpesk-framework/releases/download/26.10-rc1/redpesk-framework-26.10-rc1.tgz)
   or using commands below:
-   - `VERSION=0.3`
+   - `VERSION=26.10-rc1`
    - `wget https://github.com/redpesk-devtools/redpesk-framework/releases/download/$VERSION/redpesk-framework-$VERSION.tgz`
    - `tar xf redpesk-framework-$VERSION.tgz`
    - `cd redpesk-framework-$VERSION`
@@ -47,7 +47,7 @@ requires installing the below packages:
 
 ```sh
 $ sudo dnf install \
-    gcc binutils make cmake pkg-config \
+    gcc binutils make cmake pkg-config scdoc \
     json-c-devel libyaml-devel \
     gnutls-devel libcurl-devel \
     libuuid-devel file-devel libmicrohttpd-devel systemd-devel \
@@ -61,7 +61,7 @@ requires installing the below packages:
 
 ```sh
 $ sudo apt install \
-    gcc binutils make cmake pkg-config \
+    gcc binutils make cmake pkg-config scdoc \
     libjson-c-dev libyaml-dev \
     libgnutls28-dev libcurl4-gnutls-dev \
     uuid-dev libmagic-dev libmicrohttpd-dev libsystemd-dev \
